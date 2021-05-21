@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "4786fefe-f52b-42d1-9c1f-5cb85af9933e",
+		"name": "Dok-95 test-task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "http://localhost:3000/api/auth/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@gmail.com\",\n    \"password\": \"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						},
+						"description": "Регистрация пользователя"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/auth/login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@gmail.com\",\n    \"password\": \"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Авторизация пользователя"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "item",
+			"item": [
+				{
+					"name": "Получить все товары",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/items",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"items"
+							]
+						},
+						"description": "Получить все Item находящиеся в базе"
+					},
+					"response": []
+				},
+				{
+					"name": "Создать товар",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoiMTExMzMzMTIzNCIsImlhdCI6MTYyMTU4Nzg1MiwiZXhwIjoxNjIxNjMxMDUyfQ.rdpBxVdxCaYbTYctBp6Z67RuKw93Scz3GK7_43LEl9Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "item",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "some desc",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/items/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"items",
+								""
+							]
+						},
+						"description": "Маршрут для создания нового товара, только для зарегистрированных пользователей"
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить товар",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksImVtYWlsIjoidXNlcjEyMXMzc3NkYUBtYWlsLnJ1IiwiaWF0IjoxNjIxNTk4ODM2LCJleHAiOjE2MjE2NDIwMzZ9.gVGX6mAh2dpyq6jelfpY2GfoKYj_t5-h5LOIISRzyns",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"some name\",\n    \"description\": \"some description\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/items/14",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"items",
+								"14"
+							]
+						},
+						"description": "Маршрут для удаления товара, пользователь может удалить только свой товар"
+					},
+					"response": []
+				},
+				{
+					"name": "Обновить товар",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksImVtYWlsIjoidXNlcjEyMXMzc3NkYUBtYWlsLnJ1IiwiaWF0IjoxNjIxNTk4ODM2LCJleHAiOjE2MjE2NDIwMzZ9.gVGX6mAh2dpyq6jelfpY2GfoKYj_t5-h5LOIISRzyns",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"some name\",\n    \"description\": \"some description\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/items/14",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"items",
+								"14"
+							]
+						},
+						"description": "Маршрут для обновления товара, пользователь может обновить только свой товар"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
