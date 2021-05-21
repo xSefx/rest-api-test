@@ -44,7 +44,7 @@ class UserController {
       const list = await UserService.getAll();
       res.status(200).json(list);
     } catch (error) {
-      console.log(error);
+      next(error);
     }
   }
 }

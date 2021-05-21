@@ -12,7 +12,6 @@ class UserService {
     }
 
     const candidate = await User.findOne({ where: { email } });
-    console.log( email, password );
 
     if (candidate) {
       throw ApiError.sendError(406, 'Пользователь с таким email уже создан.');

@@ -1,5 +1,6 @@
 const ItemService = require('../services/item.service');
 const FileService = require('../services/file.service');
+const { sendNotify } = require('../webSocket/socketServer');
 
 class ItemController {
   async createItem(req, res, next) {
@@ -12,8 +13,8 @@ class ItemController {
         file: fileName,
         userId: req.user.id,
       });
-      res.json(item);
-      res.end();
+      sendNotify();
+      res.status(201).json(item);
     } catch (error) {
       next(error);
     }

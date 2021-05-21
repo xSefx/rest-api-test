@@ -8,7 +8,6 @@ class SubscriptionAPI {
   }
 
   get getSubscribeList() {
-    console.log(this.subscribeList);
     return this.subscribeList;
   }
 
