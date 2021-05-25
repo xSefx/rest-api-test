@@ -9,7 +9,7 @@ const sendNotify = () => {
   const list = subscription.getSubscribeList;
   aWss.clients.forEach((client) => {
     jwt.verify(client.tokenClient, process.env.SECRET_KEY, (err, decoded) => {
-      if (list.includes(decoded.id)) {
+      if (decoded && list.includes(decoded.id)) {
         client.send('Добавлен новый товар');
       }
     });

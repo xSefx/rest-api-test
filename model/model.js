@@ -23,13 +23,6 @@ const Item = sequelize.define(
     file: { type: DataTypes.STRING },
     createdBy: { type: DataTypes.DATE, defaultValue: Date.now() },
   },
-  {
-    hooks: {
-      afterCreate: function () {
-        console.log('aftercreate');
-      },
-    },
-  }
 );
 
 User.hasMany(Item, { onDelete: 'cascade' });

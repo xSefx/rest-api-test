@@ -6,13 +6,18 @@ class ItemController {
   async createItem(req, res, next) {
     try {
       const { name, description } = req.body;
-      const fileName = await FileService.saveFile(req.files.file);
-      const item = await ItemService.create({
+      const newItem = {
         name,
         description,
-        file: fileName,
         userId: req.user.id,
-      });
+      };
+
+      if (req.files) {
+        const fileName = await FileService.saveFile(req.files.file);
+
+        newItem.file = fileName;
+      }
+      const item = await ItemService.create(newItem);
       sendNotify();
       res.status(201).json(item);
     } catch (error) {
